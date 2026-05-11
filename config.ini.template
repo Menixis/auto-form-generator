@@ -1,0 +1,37 @@
+; -----------------------------------------------------------------------------
+; ไฟล์ตั้งค่าสำหรับการดึงข้อมูลจาก Excel
+; -----------------------------------------------------------------------------
+; วิธีตั้งค่า:
+;   1. คัดลอกไฟล์นี้เป็น  config.ini  (ลบ .template ออก)
+;   2. แทนค่า  file_path  ด้วย path ของไฟล์ Excel จริง
+;   3. ห้าม commit ไฟล์ config.ini เข้า git ถ้าไฟล์มีข้อมูลภายใน
+; -----------------------------------------------------------------------------
+
+[excel]
+; ----- file_path: ตำแหน่งของไฟล์ Excel -----
+; ตัวอย่าง path:
+;
+;   Windows (OneDrive sync):
+;     file_path = C:\Users\YourName\OneDrive - บริษัท ปตท. จำกัด (มหาชน)\PO_Data\po_data.xlsx
+;
+;   Windows (SharePoint sync):
+;     file_path = C:\Users\YourName\PTT Public Company Limited\Team Site - General\po_data.xlsx
+;
+;   Windows (Network drive):
+;     file_path = \\fileserver\shared\PO_Data\po_data.xlsx
+;
+;   Windows (Local):
+;     file_path = C:\Data\po_data.xlsx
+;
+;   macOS / Linux:
+;     file_path = /Users/yourname/OneDrive/PO_Data/po_data.xlsx
+;
+file_path = <FULL_PATH_TO_YOUR_EXCEL_FILE.xlsx>
+
+; ----- sheet_name: ชื่อ sheet ที่เก็บข้อมูล PO -----
+; เว้นว่างเพื่อใช้ sheet แรก (active sheet)
+sheet_name = 
+
+; ----- po_column: ชื่อคอลัมน์ที่เก็บเลข PO (header row) -----
+; ถ้าคอลัมน์ใน Excel ใช้ชื่อว่า "PO Number" ก็เปลี่ยนตรงนี้
+po_column = poNo

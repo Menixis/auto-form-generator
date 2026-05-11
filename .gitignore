@@ -1,0 +1,92 @@
+# =============================================================================
+# Secrets & local configuration
+# =============================================================================
+config.ini
+.powerbi_token_cache.json
+*.env
+.env
+.env.*
+
+# =============================================================================
+# Generated output (docx files สร้างจาก app)
+# =============================================================================
+output/
+test_output/
+test_output_*/
+e2e_output/
+
+# Word temporary lock files
+~$*.docx
+
+# =============================================================================
+# Python
+# =============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# =============================================================================
+# IDE / Editor
+# =============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.sublime-project
+*.sublime-workspace
+.spyderproject
+.spyproject
+
+# =============================================================================
+# OS-specific
+# =============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# =============================================================================
+# Data files (กรณีมีข้อมูลภายในที่ไม่ควร commit)
+# =============================================================================
+# Excel files ที่มีข้อมูลจริง — เปิด comment ถ้าไม่อยาก commit
+# *.xlsx
+# !sample_*.xlsx
+# !templates/*.xlsx
