@@ -5,6 +5,10 @@ secondaryBackgroundColor = "#F5F7FA"
 textColor = "#222222"
 font = "sans serif"
 
+[client]
+toolbarMode = "viewer"
+showErrorDetails = false
+
 [server]
 maxUploadSize = 50
 
