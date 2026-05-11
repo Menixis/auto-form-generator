@@ -1,3 +1,14 @@
+---
+title: Auto Form Generator
+emoji: 📄
+colorFrom: blue
+colorTo: indigo
+sdk: streamlit
+sdk_version: 1.40.0
+app_file: streamlit_app.py
+pinned: false
+short_description: ระบบสร้างหนังสือราชการอัตโนมัติ - ปตท.
+---
 # Auto Form Generator - ปตท.
 
 ระบบสร้างหนังสือราชการอัตโนมัติจากแบบฟอร์มมาตรฐาน ปตท. 5 ประเภท พร้อมดึงข้อมูล PO อัตโนมัติจากไฟล์ Excel
