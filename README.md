@@ -3,9 +3,8 @@ title: Auto Form Generator
 emoji: 📄
 colorFrom: blue
 colorTo: indigo
-sdk: streamlit
-sdk_version: 1.40.0
-app_file: streamlit_app.py
+sdk: docker
+app_port: 7860
 pinned: false
 short_description: ระบบสร้างหนังสือราชการอัตโนมัติ - ปตท.
 ---
