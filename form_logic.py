@@ -36,19 +36,22 @@ FORM_TYPES = [
 DOC_TYPE_OPTIONS = ["แจ้งให้เริ่มเข้าทำงาน", "แจ้งให้เริ่มส่งมอบสินค้า"]
 
 # Placeholder ในแบบฟอร์มต้นฉบับ
+# Shared across forms 1-5 (templates 2-5 were edited to use the same strings)
+PLACEHOLDER_VENDOR = "Vendor"
+PLACEHOLDER_WORK = "ชื่องาน"
+PLACEHOLDER_PO = "PO_No"
+
+# Form 1 only
 PLACEHOLDER_DOC_NUM_F1 = "หมายเลขเอกสาร"
-PLACEHOLDER_PO_F1 = "PO_No"
 PLACEHOLDER_TYPE_F1 = "แจ้งให้เริ่มเข้าทำงาน / เริ่มส่งมอบสินค้า"
 PLACEHOLDER_SIGNER_F1 = "ผู้มีอำนาจอนุมัติ หรือ ประธานกรรมการตรวจรับ"
-PLACEHOLDER_VENDOR_F1 = "Vendor"
-PLACEHOLDER_WORK_F1 = "ชื่องาน"
 
+# Forms 2-5 only (layout-based placeholders)
 PLACEHOLDER_DOC_NUM_F2_5 = "                   /"
 PLACEHOLDER_SIGNER_F2_5 = (
     "                                                                   "
     "(                                            )"
 )
-PLACEHOLDER_VENDOR_F2_5 = "[ระบุชื่อคู่สัญญา]"
 
 # Mapping จาก column ใน Excel → label ที่แสดงในผลลัพธ์
 DISPLAY_FIELDS = [
@@ -147,22 +150,12 @@ def generate_form(form_id, template_path, output_path,
         n = replace_text(doc, PLACEHOLDER_DOC_NUM_F1, doc_number or "")
         log.append(f"หมายเลขเอกสาร: แทนที่ {n} จุด")
 
-        n = replace_text(doc, PLACEHOLDER_PO_F1, po_number or "")
-        log.append(f"เลข PO: แทนที่ {n} จุด")
-
         if doc_type:
             n = replace_text(doc, PLACEHOLDER_TYPE_F1, doc_type)
             log.append(f"ประเภทเอกสาร: แทนที่ {n} จุด")
 
         n = replace_text(doc, PLACEHOLDER_SIGNER_F1, signer or "")
         log.append(f"ผู้ลงนาม: แทนที่ {n} จุด")
-
-        if vendor_name:
-            n = replace_text(doc, PLACEHOLDER_VENDOR_F1, vendor_name)
-            log.append(f"ชื่อคู่สัญญา (Excel): แทนที่ {n} จุด")
-        if work_title:
-            n = replace_text(doc, PLACEHOLDER_WORK_F1, work_title)
-            log.append(f"ชื่องาน (Excel): แทนที่ {n} จุด")
     else:
         n = replace_text(
             doc, PLACEHOLDER_DOC_NUM_F2_5,
@@ -173,11 +166,17 @@ def generate_form(form_id, template_path, output_path,
             n = replace_text(doc, PLACEHOLDER_SIGNER_F2_5,
                              format_signer_line_f2_5(signer))
             log.append(f"ผู้ลงนาม: แทนที่ {n} จุด")
-        if vendor_name:
-            n = replace_text(doc, PLACEHOLDER_VENDOR_F2_5, vendor_name)
-            log.append(f"ชื่อคู่สัญญา (Excel): แทนที่ {n} จุด")
-        if po_number:
-            log.append("เลข PO: (แบบฟอร์มนี้ไม่มีช่อง PO โดยตรง - ข้าม)")
+
+    # Shared across all forms (templates 2-5 now use the same placeholder strings)
+    if po_number:
+        n = replace_text(doc, PLACEHOLDER_PO, po_number)
+        log.append(f"เลข PO: แทนที่ {n} จุด")
+    if vendor_name:
+        n = replace_text(doc, PLACEHOLDER_VENDOR, vendor_name)
+        log.append(f"ชื่อคู่สัญญา (Excel): แทนที่ {n} จุด")
+    if work_title:
+        n = replace_text(doc, PLACEHOLDER_WORK, work_title)
+        log.append(f"ชื่องาน (Excel): แทนที่ {n} จุด")
 
     doc.save(output_path)
     return log

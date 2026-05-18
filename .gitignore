@@ -15,6 +15,9 @@ test_output/
 test_output_*/
 e2e_output/
 
+# Local backup of original PTT templates kept for rollback only
+templates_backup/
+
 # Word temporary lock files
 ~$*.docx
 
